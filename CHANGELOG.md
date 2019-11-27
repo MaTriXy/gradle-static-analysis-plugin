@@ -1,6 +1,22 @@
 Change Log
 ==========
 
+[Version 1.2](https://github.com/novoda/gradle-static-analysis-plugin/releases/tag/v1.2)
+--------------------------
+
+- Add support for SpotBugs [PR#209](https://github.com/novoda/gradle-static-analysis-plugin/pull/209)
+- Fixed an issue caused by combination of Gradle 5.6 and kotlin-kapt [#199](https://github.com/novoda/gradle-static-analysis-plugin/issues/199)
+- Fix: Removed usage of deprecated Android APIs [PR#212](https://github.com/novoda/gradle-static-analysis-plugin/pull/212)
+- Findbugs support is deprecated [PR#216](https://github.com/novoda/gradle-static-analysis-plugin/pull/216)
+
+[Version 1.1](https://github.com/novoda/gradle-static-analysis-plugin/releases/tag/v1.1)
+--------------------------
+
+- Add support for Ktlint Plugin: `9.0.0`. Thanks [Adam McNeilly](https://github.com/AdamMc331) for the contribution [PR#202](https://github.com/novoda/gradle-static-analysis-plugin/pull/202)
+- Update project to use Gradle 5.6.3. [PR#203](https://github.com/novoda/gradle-static-analysis-plugin/pull/203)
+  - Note: Minimum supported Gradle version is still 4.x (tested with 4.3.1)
+- Update docs [PR#194](https://github.com/novoda/gradle-static-analysis-plugin/pull/194)
+
 [Version 1.0](https://github.com/novoda/gradle-static-analysis-plugin/releases/tag/v1.0)
 --------------------------
                       

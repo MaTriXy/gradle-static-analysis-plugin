@@ -21,7 +21,8 @@ The plugin supports various static analysis tools for Java, Kotlin and Android p
 
  * [`Checkstyle`](docs/tools/checkstyle.md)
  * [`PMD`](docs/tools/pmd.md)
- * [`FindBugs`](docs/tools/findbugs.md)
+ * [`FindBugs`](docs/tools/findbugs.md) [DEPRECATED] [Removed in Gradle 6.0]
+ * [`SpotBugs`](docs/tools/spotbugs.md)
  * [`Detekt`](docs/tools/detekt.md)
  * [`Android Lint`](docs/tools/android_lint.md)
  * [`KtLint`](docs/tools/ktlint.md)
@@ -31,7 +32,6 @@ Please note that the tools availability depends on the project the plugin is app
 
 ### Tools in-consideration
                           
- * `Spotbugs` [#142](https://github.com/novoda/gradle-static-analysis-plugin/issues/142)
  * `CPD (Duplicate Code Detection) ` [#150](https://github.com/novoda/gradle-static-analysis-plugin/issues/150)
  * `error-prone` [#151](https://github.com/novoda/gradle-static-analysis-plugin/issues/151)
  * `Jetbrains IDEA Inspections` [#152](https://github.com/novoda/gradle-static-analysis-plugin/issues/152)
@@ -52,7 +52,7 @@ buildscript {
        jcenter()
     }
     dependencies {
-        classpath 'com.novoda:gradle-static-analysis-plugin:0.8'
+        classpath 'com.novoda:gradle-static-analysis-plugin:1.2'
     }
 }
 
@@ -63,7 +63,7 @@ or from the [Gradle Plugins Repository](https://plugins.gradle.org/):
 
 ```gradle
 plugins {
-    id 'com.novoda.static-analysis' version '0.8'
+    id 'com.novoda.static-analysis' version '1.2'
 }
 
 ```
@@ -80,16 +80,17 @@ staticAnalysis {
     checkstyle { }
     pmd { }
     findbugs { }
+    spotbugs { }
     detekt { }
     lintOptions { }
 }
 ```
 
-This will enable all the tools with their default settings. For more advanced configurations, please refer to the
+This will enable all the tools with their default settings and create `evaluateViolations` task. Running `./gradlew evaluateViolations` task will run all configured tools and print the reports to console. For more advanced configurations, please refer to the
 [advanced usage](docs/advanced-usage.md) and to the [supported tools](docs/supported-tools.md) pages.
 
 ## Sample app
-There are two sample Android projects available, one consisting of a regular app - available [here](https://github.com/novoda/gradle-static-analysis-plugin/tree/master/sample) - and the other comprising a multi-module setup available [here](https://github.com/novoda/gradle-static-analysis-plugin/tree/master/sample-multi-module). Both sample projects showcase a setup featuring Checkstyle, FindBugs, PMD, Lint and Detekt.
+There are two sample Android projects available, one consisting of a regular app - available [here](https://github.com/novoda/gradle-static-analysis-plugin/tree/master/sample) - and the other comprising a multi-module setup available [here](https://github.com/novoda/gradle-static-analysis-plugin/tree/master/sample-multi-module). Both sample projects showcase a setup featuring Checkstyle, FindBugs, SpotBugs, PMD, Lint, Ktlint and Detekt.
 
 ## Snapshots
 [![CI status](https://ci.novoda.com/buildStatus/icon?job=gradle-static-analysis-plugin-snapshot)](https://ci.novoda.com/job/gradle-static-analysis-plugin-snapshot/lastBuild/console) [![Download from Bintray](https://api.bintray.com/packages/novoda-oss/snapshots/gradle-static-analysis-plugin/images/download.svg)](https://bintray.com/novoda-oss/snapshots/gradle-static-analysis-plugin/_latestVersion)
@@ -107,8 +108,8 @@ repositories {
 You can find the latest snapshot version following this [link](https://bintray.com/novoda-oss/snapshots/gradle-static-analysis-plugin/_latestVersion).
 
 ## Roadmap
-The plugin is under active development. It is routinely used by many Novoda projects and
-by other external projects with no known critical issues.
 
-Future improvements can be found on the repository's
+This project is routinely used by many Novoda projects and by other external projects with no known critical issues.
+
+Future improvements and new tool integrations can be found on the repository's
 [issue tracker](https://github.com/novoda/gradle-static-analysis-plugin/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement).
